@@ -12,26 +12,18 @@ export class ClienteService {
   constructor(private http: HttpClient) { }
 
   listaCliente(): Observable<Cliente[]>  {
-    return this.http.get<Cliente[]>(this.apiURL);
-
-    
+    return this.http.get<Cliente[]>(this.apiURL); 
   }
   cadastrarCliente(cliente:Cliente):Observable<Cliente>{
     return this.http.post<Cliente>(this.apiURL,cliente);
-
   }
   buscarCliente(id:string):Observable<Cliente>{
     return this.http.get<Cliente>(`${this.apiURL}/${id}`);
   }
-
   atulizarCliente(id:string,cliente:Cliente): Observable<Cliente>{
     return this.http.patch<Cliente>(`${this.apiURL}/${id}`,cliente);
-
   }
   deletarCliente(id:string):Observable<void>{
     return this.http.delete<void>(`${this.apiURL}/${id}`);
   }
-
-
-
 }
